@@ -1,0 +1,938 @@
+E701 Multiple statements on one line (colon)
+  --> dashboard\app.py:15:17
+   |
+13 |     # crude parser for protocol tokens
+14 |     parts = s.split(":")
+15 |     if not parts: return None
+   |                 ^
+16 |     return {"raw": s, "t": time.time()}
+   |
+
+E701 Multiple statements on one line (colon)
+  --> dashboard\app.py:41:24
+   |
+39 |                 data = parse_line(s)
+40 |                 if data:
+41 |                     try: q.put_nowait(data)
+   |                        ^
+42 |                     except Exception:
+43 | pass
+   |
+
+invalid-syntax: Expected an indented block after `except` clause
+  --> dashboard\app.py:42:38
+   |
+40 |                 if data:
+41 |                     try: q.put_nowait(data)
+42 |                     except Exception:
+   |                                      ^
+43 | pass
+44 |     except Exception as e:
+   |
+
+invalid-syntax: Expected `except` or `finally` after `try` block
+  --> dashboard\app.py:43:1
+   |
+41 |                     try: q.put_nowait(data)
+42 |                     except Exception:
+43 | pass
+   | ^
+44 |     except Exception as e:
+45 |         while True:
+   |
+
+invalid-syntax: Unexpected indentation
+  --> dashboard\app.py:44:1
+   |
+42 |                     except Exception:
+43 | pass
+44 |     except Exception as e:
+   | ^^^^
+45 |         while True:
+46 |             time.sleep(1)
+   |
+
+invalid-syntax: Expected a statement
+  --> dashboard\app.py:44:5
+   |
+42 |                     except Exception:
+43 | pass
+44 |     except Exception as e:
+   |     ^^^^^^
+45 |         while True:
+46 |             time.sleep(1)
+   |
+
+invalid-syntax: Expected a statement
+  --> dashboard\app.py:44:22
+   |
+42 |                     except Exception:
+43 | pass
+44 |     except Exception as e:
+   |                      ^^
+45 |         while True:
+46 |             time.sleep(1)
+   |
+
+invalid-syntax: Expected an expression
+  --> dashboard\app.py:44:27
+   |
+42 |                     except Exception:
+43 | pass
+44 |     except Exception as e:
+   |                           ^
+45 |         while True:
+46 |             time.sleep(1)
+   |
+
+invalid-syntax: Unexpected indentation
+  --> dashboard\app.py:45:1
+   |
+43 | pass
+44 |     except Exception as e:
+45 |         while True:
+   | ^^^^^^^^
+46 |             time.sleep(1)
+   |
+
+invalid-syntax: Expected a statement
+  --> dashboard\app.py:48:1
+   |
+46 |             time.sleep(1)
+47 |
+48 | if __name__ == "__main__":
+   | ^
+49 |     t = threading.Thread(target=serial_reader, daemon=True)
+50 |     t.start()
+   |
+
+invalid-syntax: missing closing quote in string literal
+   --> pc\driver_monitor_cli.py:135:29
+    |
+133 |             ok, frame = cap.read()
+134 |             if not ok:
+135 |                 log.warning("Camera read failed
+    |                             ^^^^^^^^^^^^^^^^^^^
+136 | retrying...")
+137 |                 time.sleep(0.2)
+    |
+
+invalid-syntax: Expected `,`, found name
+   --> pc\driver_monitor_cli.py:136:1
+    |
+134 |             if not ok:
+135 |                 log.warning("Camera read failed
+136 | retrying...")
+    | ^^^^^^^^
+137 |                 time.sleep(0.2)
+138 |                 continue
+    |
+
+invalid-syntax: Expected `,`, found `...`
+   --> pc\driver_monitor_cli.py:136:9
+    |
+134 |             if not ok:
+135 |                 log.warning("Camera read failed
+136 | retrying...")
+    |         ^^^
+137 |                 time.sleep(0.2)
+138 |                 continue
+    |
+
+invalid-syntax: missing closing quote in string literal
+   --> pc\driver_monitor_cli.py:136:12
+    |
+134 |             if not ok:
+135 |                 log.warning("Camera read failed
+136 | retrying...")
+    |            ^^
+137 |                 time.sleep(0.2)
+138 |                 continue
+    |
+
+invalid-syntax: Expected `,`, found name
+   --> pc\driver_monitor_cli.py:137:17
+    |
+135 |                 log.warning("Camera read failed
+136 | retrying...")
+137 |                 time.sleep(0.2)
+    |                 ^^^^
+138 |                 continue
+    |
+
+invalid-syntax: Expected `)`, found newline
+   --> pc\driver_monitor_cli.py:137:32
+    |
+135 |                 log.warning("Camera read failed
+136 | retrying...")
+137 |                 time.sleep(0.2)
+    |                                ^
+138 |                 continue
+    |
+
+invalid-syntax: Expected `except` or `finally` after `try` block
+   --> pc\driver_monitor_cli.py:166:1
+    |
+164 |                         send_esp(ser_conn, "CMD:MODE:ON")
+165 |                         db.execute("INSERT INTO events VALUES (?,?,?)", (ts, "CMD", "MODE:ON"))
+166 | db.commit()
+    | ^
+167 |                         log.info("Autopilot ON (drowsy)")
+168 |                         autopilot_on = True
+    |
+
+invalid-syntax: Unexpected indentation
+   --> pc\driver_monitor_cli.py:167:1
+    |
+165 |                         db.execute("INSERT INTO events VALUES (?,?,?)", (ts, "CMD", "MODE:ON"))
+166 | db.commit()
+167 |                         log.info("Autopilot ON (drowsy)")
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+168 |                         autopilot_on = True
+169 |                 else:
+    |
+
+invalid-syntax: unindent does not match any outer indentation level
+   --> pc\driver_monitor_cli.py:169:1
+    |
+167 |                         log.info("Autopilot ON (drowsy)")
+168 |                         autopilot_on = True
+169 |                 else:
+    | ^^^^^^^^^^^^^^^^
+170 |                     consec = 0
+171 |                     if autopilot_on:
+    |
+
+invalid-syntax: Expected a statement
+   --> pc\driver_monitor_cli.py:169:17
+    |
+167 |                         log.info("Autopilot ON (drowsy)")
+168 |                         autopilot_on = True
+169 |                 else:
+    |                 ^^^^
+170 |                     consec = 0
+171 |                     if autopilot_on:
+    |
+
+invalid-syntax: Expected a statement
+   --> pc\driver_monitor_cli.py:169:21
+    |
+167 |                         log.info("Autopilot ON (drowsy)")
+168 |                         autopilot_on = True
+169 |                 else:
+    |                     ^
+170 |                     consec = 0
+171 |                     if autopilot_on:
+    |
+
+invalid-syntax: Expected a statement
+   --> pc\driver_monitor_cli.py:169:22
+    |
+167 |                         log.info("Autopilot ON (drowsy)")
+168 |                         autopilot_on = True
+169 |                 else:
+    |                      ^
+170 |                     consec = 0
+171 |                     if autopilot_on:
+    |
+
+invalid-syntax: Unexpected indentation
+   --> pc\driver_monitor_cli.py:170:1
+    |
+168 |                         autopilot_on = True
+169 |                 else:
+170 |                     consec = 0
+    | ^^^^^^^^^^^^^^^^^^^^
+171 |                     if autopilot_on:
+172 |                         # Count open-eye duration
+    |
+
+invalid-syntax: Expected a statement
+   --> pc\driver_monitor_cli.py:176:1
+    |
+174 |                             send_esp(ser_conn, "CMD:MODE:OFF")
+175 |                             db.execute("INSERT INTO events VALUES (?,?,?)", (ts, "CMD", "MODE:OFF"))
+176 | db.commit()
+    | ^
+177 |                             log.info("Autopilot OFF (recovered)")
+178 |                             autopilot_on = False
+    |
+
+invalid-syntax: Unexpected indentation
+   --> pc\driver_monitor_cli.py:177:1
+    |
+175 |                             db.execute("INSERT INTO events VALUES (?,?,?)", (ts, "CMD", "MODE:OFF"))
+176 | db.commit()
+177 |                             log.info("Autopilot OFF (recovered)")
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+178 |                             autopilot_on = False
+179 |                     last_open_ts = ts
+    |
+
+invalid-syntax: unindent does not match any outer indentation level
+   --> pc\driver_monitor_cli.py:179:1
+    |
+177 |                             log.info("Autopilot OFF (recovered)")
+178 |                             autopilot_on = False
+179 |                     last_open_ts = ts
+    | ^^^^^^^^^^^^^^^^^^^^
+180 |
+181 |             # periodic prune
+    |
+
+invalid-syntax: Unexpected indentation
+   --> pc\driver_monitor_cli.py:182:1
+    |
+181 |             # periodic prune
+182 |             if int(ts) % 30 == 0:
+    | ^^^^^^^^^^^^
+183 |                 prune_db(db)
+    |
+
+invalid-syntax: unindent does not match any outer indentation level
+   --> pc\driver_monitor_cli.py:185:5
+    |
+183 |                 prune_db(db)
+184 |
+185 |     except KeyboardInterrupt:
+    |     ^
+186 |         log.info("Interrupted by user.")
+187 |     finally:
+    |
+
+invalid-syntax: Expected an expression
+   --> pc\driver_monitor_cli.py:185:30
+    |
+183 |                 prune_db(db)
+184 |
+185 |     except KeyboardInterrupt:
+    |                              ^
+186 |         log.info("Interrupted by user.")
+187 |     finally:
+    |
+
+invalid-syntax: Unexpected indentation
+   --> pc\driver_monitor_cli.py:186:1
+    |
+185 |     except KeyboardInterrupt:
+186 |         log.info("Interrupted by user.")
+    | ^^^^^^^^
+187 |     finally:
+188 |         try: cap and cap.release()
+    |
+
+invalid-syntax: unindent does not match any outer indentation level
+   --> pc\driver_monitor_cli.py:187:1
+    |
+185 |     except KeyboardInterrupt:
+186 |         log.info("Interrupted by user.")
+187 |     finally:
+    | ^^^^
+188 |         try: cap and cap.release()
+189 |         except Exception:
+    |
+
+invalid-syntax: Expected a statement
+   --> pc\driver_monitor_cli.py:187:5
+    |
+185 |     except KeyboardInterrupt:
+186 |         log.info("Interrupted by user.")
+187 |     finally:
+    |     ^^^^^^^
+188 |         try: cap and cap.release()
+189 |         except Exception:
+    |
+
+invalid-syntax: Expected a statement
+   --> pc\driver_monitor_cli.py:187:12
+    |
+185 |     except KeyboardInterrupt:
+186 |         log.info("Interrupted by user.")
+187 |     finally:
+    |            ^
+188 |         try: cap and cap.release()
+189 |         except Exception:
+    |
+
+invalid-syntax: Expected a statement
+   --> pc\driver_monitor_cli.py:187:13
+    |
+185 |     except KeyboardInterrupt:
+186 |         log.info("Interrupted by user.")
+187 |     finally:
+    |             ^
+188 |         try: cap and cap.release()
+189 |         except Exception:
+    |
+
+invalid-syntax: Unexpected indentation
+   --> pc\driver_monitor_cli.py:188:1
+    |
+186 |         log.info("Interrupted by user.")
+187 |     finally:
+188 |         try: cap and cap.release()
+    | ^^^^^^^^
+189 |         except Exception:
+190 | pass
+    |
+
+E701 Multiple statements on one line (colon)
+   --> pc\driver_monitor_cli.py:188:12
+    |
+186 |         log.info("Interrupted by user.")
+187 |     finally:
+188 |         try: cap and cap.release()
+    |            ^
+189 |         except Exception:
+190 | pass
+    |
+
+invalid-syntax: Expected an indented block after `except` clause
+   --> pc\driver_monitor_cli.py:189:26
+    |
+187 |     finally:
+188 |         try: cap and cap.release()
+189 |         except Exception:
+    |                          ^
+190 | pass
+191 |         try: face_mesh and face_mesh.close()
+    |
+
+invalid-syntax: Expected a statement
+   --> pc\driver_monitor_cli.py:190:1
+    |
+188 |         try: cap and cap.release()
+189 |         except Exception:
+190 | pass
+    | ^
+191 |         try: face_mesh and face_mesh.close()
+192 |         except Exception:
+    |
+
+invalid-syntax: Unexpected indentation
+   --> pc\driver_monitor_cli.py:191:1
+    |
+189 |         except Exception:
+190 | pass
+191 |         try: face_mesh and face_mesh.close()
+    | ^^^^^^^^
+192 |         except Exception:
+193 | pass
+    |
+
+E701 Multiple statements on one line (colon)
+   --> pc\driver_monitor_cli.py:191:12
+    |
+189 |         except Exception:
+190 | pass
+191 |         try: face_mesh and face_mesh.close()
+    |            ^
+192 |         except Exception:
+193 | pass
+    |
+
+invalid-syntax: Expected an indented block after `except` clause
+   --> pc\driver_monitor_cli.py:192:26
+    |
+190 | pass
+191 |         try: face_mesh and face_mesh.close()
+192 |         except Exception:
+    |                          ^
+193 | pass
+194 |         try: ser_conn and ser_conn.close()
+    |
+
+invalid-syntax: Expected a statement
+   --> pc\driver_monitor_cli.py:193:1
+    |
+191 |         try: face_mesh and face_mesh.close()
+192 |         except Exception:
+193 | pass
+    | ^
+194 |         try: ser_conn and ser_conn.close()
+195 |         except Exception:
+    |
+
+invalid-syntax: Unexpected indentation
+   --> pc\driver_monitor_cli.py:194:1
+    |
+192 |         except Exception:
+193 | pass
+194 |         try: ser_conn and ser_conn.close()
+    | ^^^^^^^^
+195 |         except Exception:
+196 | pass
+    |
+
+E701 Multiple statements on one line (colon)
+   --> pc\driver_monitor_cli.py:194:12
+    |
+192 |         except Exception:
+193 | pass
+194 |         try: ser_conn and ser_conn.close()
+    |            ^
+195 |         except Exception:
+196 | pass
+    |
+
+invalid-syntax: Expected an indented block after `except` clause
+   --> pc\driver_monitor_cli.py:195:26
+    |
+193 | pass
+194 |         try: ser_conn and ser_conn.close()
+195 |         except Exception:
+    |                          ^
+196 | pass
+    |
+
+invalid-syntax: Expected a statement
+   --> pc\driver_monitor_cli.py:196:1
+    |
+194 |         try: ser_conn and ser_conn.close()
+195 |         except Exception:
+196 | pass
+    | ^
+197 |
+198 | if __name__ == "__main__":
+    |
+
+invalid-syntax: Unexpected indentation
+  --> pc\fingerprint_logger_cli.py:27:1
+   |
+25 |                 f.write(line + "\n")
+26 | f.flush()
+27 |                 print("saved:", line, flush=True)
+   | ^^^^^^^^^^^^^^^^
+28 |
+29 | if __name__ == "__main__":
+   |
+
+invalid-syntax: Expected a statement
+  --> pc\fingerprint_logger_cli.py:29:1
+   |
+27 |                 print("saved:", line, flush=True)
+28 |
+29 | if __name__ == "__main__":
+   | ^
+30 |     main()
+   |
+
+E701 Multiple statements on one line (colon)
+  --> v2\dashboard_v2\app.py:15:16
+   |
+13 |             s = raw.decode(errors="ignore").strip()
+14 |             data = parse_line(s) or {"type":"RAW","raw":s}
+15 |             try: q.put_nowait(data)
+   |                ^
+16 |             except Exception:
+17 | pass
+   |
+
+invalid-syntax: Expected an indented block after `except` clause
+  --> v2\dashboard_v2\app.py:16:30
+   |
+14 |             data = parse_line(s) or {"type":"RAW","raw":s}
+15 |             try: q.put_nowait(data)
+16 |             except Exception:
+   |                              ^
+17 | pass
+   |
+
+invalid-syntax: Unexpected indentation
+  --> v2\pc_v2\driver_monitor_v2.py:56:1
+   |
+54 | autopilot = False
+55 | last_open = time.time()
+56 |     while True:
+   | ^^^^
+57 |         ok, frame = cap.read()
+58 |         if not ok:
+   |
+
+invalid-syntax: Expected a statement
+  --> v2\pc_v2\driver_monitor_v2.py:60:1
+   |
+58 |         if not ok:
+59 |             time.sleep(0.05)
+60 | continue
+   | ^
+61 |         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+62 |         res = face_mesh.process(rgb)
+   |
+
+invalid-syntax: Unexpected indentation
+  --> v2\pc_v2\driver_monitor_v2.py:61:1
+   |
+59 |             time.sleep(0.05)
+60 | continue
+61 |         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+   | ^^^^^^^^
+62 |         res = face_mesh.process(rgb)
+63 |         ear = None
+   |
+
+invalid-syntax: Expected `except` or `finally` after `try` block
+  --> v2\pc_v2\driver_monitor_v2.py:73:1
+   |
+71 |             try:
+72 |                 L = ear4(p(159),p(145),p(33),p(133))
+73 | R = ear4(p(386),p(374),p(263),p(362))
+   | ^
+74 |                 ear = float((L+R)/2.0)
+75 |             except Exception: pass
+   |
+
+invalid-syntax: Unexpected indentation
+  --> v2\pc_v2\driver_monitor_v2.py:74:1
+   |
+72 |                 L = ear4(p(159),p(145),p(33),p(133))
+73 | R = ear4(p(386),p(374),p(263),p(362))
+74 |                 ear = float((L+R)/2.0)
+   | ^^^^^^^^^^^^^^^^
+75 |             except Exception: pass
+76 |         ts = time.time()
+   |
+
+invalid-syntax: unindent does not match any outer indentation level
+  --> v2\pc_v2\driver_monitor_v2.py:75:1
+   |
+73 | R = ear4(p(386),p(374),p(263),p(362))
+74 |                 ear = float((L+R)/2.0)
+75 |             except Exception: pass
+   | ^^^^^^^^^^^^
+76 |         ts = time.time()
+77 |         if ear is not None:
+   |
+
+invalid-syntax: Expected a statement
+  --> v2\pc_v2\driver_monitor_v2.py:75:13
+   |
+73 | R = ear4(p(386),p(374),p(263),p(362))
+74 |                 ear = float((L+R)/2.0)
+75 |             except Exception: pass
+   |             ^^^^^^
+76 |         ts = time.time()
+77 |         if ear is not None:
+   |
+
+E701 Multiple statements on one line (colon)
+  --> v2\pc_v2\driver_monitor_v2.py:75:29
+   |
+73 | R = ear4(p(386),p(374),p(263),p(362))
+74 |                 ear = float((L+R)/2.0)
+75 |             except Exception: pass
+   |                             ^
+76 |         ts = time.time()
+77 |         if ear is not None:
+   |
+
+invalid-syntax: Expected an identifier, but found a keyword `pass` that cannot be used here
+  --> v2\pc_v2\driver_monitor_v2.py:75:31
+   |
+73 | R = ear4(p(386),p(374),p(263),p(362))
+74 |                 ear = float((L+R)/2.0)
+75 |             except Exception: pass
+   |                               ^^^^
+76 |         ts = time.time()
+77 |         if ear is not None:
+   |
+
+invalid-syntax: Unexpected indentation
+  --> v2\pc_v2\driver_monitor_v2.py:76:1
+   |
+74 |                 ear = float((L+R)/2.0)
+75 |             except Exception: pass
+76 |         ts = time.time()
+   | ^^^^^^^^
+77 |         if ear is not None:
+78 |             if ear < args.ear_thresh:
+   |
+
+invalid-syntax: Expected a statement
+  --> v2\pc_v2\driver_monitor_v2.py:94:1
+   |
+92 |             db_prune(db)
+93 |
+94 | if __name__ == "__main__":
+   | ^
+95 |     main()
+   |
+
+invalid-syntax: Unexpected indentation
+  --> v2\pc_v2\fingerprint_logger_v2.py:19:1
+   |
+17 |                 f.write(json.dumps({"ts": time.time(), "line": line}) + "\n")
+18 | f.flush()
+19 |                 print("saved:", line, flush=True)
+   | ^^^^^^^^^^^^^^^^
+20 |
+21 | if __name__ == "__main__":
+   |
+
+invalid-syntax: Expected a statement
+  --> v2\pc_v2\fingerprint_logger_v2.py:21:1
+   |
+19 |                 print("saved:", line, flush=True)
+20 |
+21 | if __name__ == "__main__":
+   | ^
+22 |     main()
+   |
+
+E701 Multiple statements on one line (colon)
+  --> v2\pc_v2\lane_detector_v2.py:14:23
+   |
+12 |         return "UNKNOWN"
+13 |     m = int(np.mean(midpoints[-15:]))
+14 |     if m < center - 10: return "LEFT"
+   |                       ^
+15 |     if m > center + 10: return "RIGHT"
+16 |     return "CENTER"
+   |
+
+E701 Multiple statements on one line (colon)
+  --> v2\pc_v2\lane_detector_v2.py:15:23
+   |
+13 |     m = int(np.mean(midpoints[-15:]))
+14 |     if m < center - 10: return "LEFT"
+15 |     if m > center + 10: return "RIGHT"
+   |                       ^
+16 |     return "CENTER"
+   |
+
+E701 Multiple statements on one line (colon)
+  --> v2\pc_v2\lane_detector_v2.py:24:18
+   |
+22 |     while True:
+23 |         ok, frame = cap.read()
+24 |         if not ok: time.sleep(0.05)
+   |                  ^
+25 | continue
+26 |         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+   |
+
+invalid-syntax: Unexpected indentation
+  --> v2\pc_v2\lane_detector_v2.py:26:1
+   |
+24 |         if not ok: time.sleep(0.05)
+25 | continue
+26 |         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+   | ^^^^^^^^
+27 |         blur = cv2.GaussianBlur(gray, (5,5), 0)
+28 |         edges = cv2.Canny(blur, 80, 160)
+   |
+
+invalid-syntax: Expected a statement
+  --> v2\pc_v2\lane_detector_v2.py:31:1
+   |
+29 |         edges = cv2.morphologyEx(edges, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT,(3,3)))
+30 |         h,w = frame.shape[:2]
+31 | center = w//2
+   | ^
+32 |         lines = cv2.HoughLinesP(edges, 1, np.pi/180, threshold=40, minLineLength=30, maxLineGap=25)
+33 |         left_x, right_x = [], []
+   |
+
+invalid-syntax: Unexpected indentation
+  --> v2\pc_v2\lane_detector_v2.py:32:1
+   |
+30 |         h,w = frame.shape[:2]
+31 | center = w//2
+32 |         lines = cv2.HoughLinesP(edges, 1, np.pi/180, threshold=40, minLineLength=30, maxLineGap=25)
+   | ^^^^^^^^
+33 |         left_x, right_x = [], []
+34 |         if lines is not None:
+   |
+
+E701 Multiple statements on one line (colon)
+  --> v2\pc_v2\lane_detector_v2.py:37:32
+   |
+35 |             for x1,y1,x2,y2 in lines[:,0]:
+36 |                 slope = (y2-y1)/(x2-x1+1e-6)
+37 |                 if slope < -0.5: left_x += [x1,x2]
+   |                                ^
+38 |                 elif slope > 0.5: right_x += [x1,x2]
+39 |         midpoint = None
+   |
+
+E701 Multiple statements on one line (colon)
+  --> v2\pc_v2\lane_detector_v2.py:38:33
+   |
+36 |                 slope = (y2-y1)/(x2-x1+1e-6)
+37 |                 if slope < -0.5: left_x += [x1,x2]
+38 |                 elif slope > 0.5: right_x += [x1,x2]
+   |                                 ^
+39 |         midpoint = None
+40 |         if left_x and right_x:
+   |
+
+invalid-syntax: Expected a statement
+  --> v2\pc_v2\lane_detector_v2.py:43:1
+   |
+41 |             midpoint = int((max(left_x)+min(right_x))//2)
+42 |             mids.append(midpoint)
+43 | mids = mids[-30:]
+   | ^
+44 |
+45 |         status = decide(mids, center)
+   |
+
+invalid-syntax: Unexpected indentation
+  --> v2\pc_v2\lane_detector_v2.py:45:1
+   |
+43 | mids = mids[-30:]
+44 |
+45 |         status = decide(mids, center)
+   | ^^^^^^^^
+46 |         if args.show:
+47 |             vis = frame.copy()
+   |
+
+E701 Multiple statements on one line (colon)
+  --> v2\pc_v2\lane_detector_v2.py:53:36
+   |
+51 |             cv2.putText(vis, f"LANE:{status}", (10,20), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,255), 2)
+52 |             cv2.imshow("lane_v2", vis)
+53 |             if cv2.waitKey(1) == 27: break
+   |                                    ^
+54 |     cap.release()
+55 |     cv2.destroyAllWindows()
+   |
+
+invalid-syntax: unindent does not match any outer indentation level
+  --> v2\pc_v2\lane_detector_v2.py:54:5
+   |
+52 |             cv2.imshow("lane_v2", vis)
+53 |             if cv2.waitKey(1) == 27: break
+54 |     cap.release()
+   |     ^
+55 |     cv2.destroyAllWindows()
+   |
+
+invalid-syntax: Unexpected indentation
+  --> v2\pc_v2\lane_detector_v2.py:55:1
+   |
+53 |             if cv2.waitKey(1) == 27: break
+54 |     cap.release()
+55 |     cv2.destroyAllWindows()
+   | ^^^^
+56 |
+57 | if __name__ == "__main__":
+   |
+
+invalid-syntax: Expected a statement
+  --> v2\pc_v2\lane_detector_v2.py:57:1
+   |
+55 |     cv2.destroyAllWindows()
+56 |
+57 | if __name__ == "__main__":
+   | ^
+58 |     main()
+   |
+
+invalid-syntax: missing closing quote in string literal
+ --> v2\pc_v2\telemetry_store.py:4:7
+  |
+2 | from typing import Iterable, Dict, Any
+3 |
+4 | DDL = "
+  |       ^
+5 | CREATE TABLE IF NOT EXISTS events (
+6 |   ts REAL,
+  |
+
+invalid-syntax: Simple statements must be separated by newlines or semicolons
+ --> v2\pc_v2\telemetry_store.py:5:8
+  |
+4 | DDL = "
+5 | CREATE TABLE IF NOT EXISTS events (
+  |        ^^^^^
+6 |   ts REAL,
+7 |   type TEXT,
+  |
+
+invalid-syntax: Simple statements must be separated by newlines or semicolons
+ --> v2\pc_v2\telemetry_store.py:5:14
+  |
+4 | DDL = "
+5 | CREATE TABLE IF NOT EXISTS events (
+  |              ^^
+6 |   ts REAL,
+7 |   type TEXT,
+  |
+
+invalid-syntax: Simple statements must be separated by newlines or semicolons
+ --> v2\pc_v2\telemetry_store.py:5:17
+  |
+4 | DDL = "
+5 | CREATE TABLE IF NOT EXISTS events (
+  |                 ^^^
+6 |   ts REAL,
+7 |   type TEXT,
+  |
+
+invalid-syntax: Simple statements must be separated by newlines or semicolons
+ --> v2\pc_v2\telemetry_store.py:5:21
+  |
+4 | DDL = "
+5 | CREATE TABLE IF NOT EXISTS events (
+  |                     ^^^^^^
+6 |   ts REAL,
+7 |   type TEXT,
+  |
+
+invalid-syntax: Simple statements must be separated by newlines or semicolons
+ --> v2\pc_v2\telemetry_store.py:5:28
+  |
+4 | DDL = "
+5 | CREATE TABLE IF NOT EXISTS events (
+  |                            ^^^^^^
+6 |   ts REAL,
+7 |   type TEXT,
+  |
+
+invalid-syntax: Expected `,`, found name
+ --> v2\pc_v2\telemetry_store.py:6:6
+  |
+4 | DDL = "
+5 | CREATE TABLE IF NOT EXISTS events (
+6 |   ts REAL,
+  |      ^^^^
+7 |   type TEXT,
+8 |   data TEXT
+  |
+
+invalid-syntax: Expected `,`, found name
+ --> v2\pc_v2\telemetry_store.py:7:8
+  |
+5 | CREATE TABLE IF NOT EXISTS events (
+6 |   ts REAL,
+7 |   type TEXT,
+  |        ^^^^
+8 |   data TEXT
+9 | )
+  |
+
+invalid-syntax: Expected `,`, found name
+  --> v2\pc_v2\telemetry_store.py:8:8
+   |
+ 6 |   ts REAL,
+ 7 |   type TEXT,
+ 8 |   data TEXT
+   |        ^^^^
+ 9 | )
+10 | "
+   |
+
+invalid-syntax: missing closing quote in string literal
+  --> v2\pc_v2\telemetry_store.py:10:1
+   |
+ 8 |   data TEXT
+ 9 | )
+10 | "
+   | ^
+11 |
+12 | def open_db(path: str) -> sqlite3.Connection:
+   |
+
+Found 87 errors.

@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
-import sys, os, pathlib
-CONFIG_PATH = os.environ.get("APP_CONFIG", str(pathlib.Path(__file__).resolve().parents[1] / "config" / "config.toml"))
+import sys
+import os
+import pathlib
+
+CONFIG_PATH = os.environ.get(
+    "APP_CONFIG",
+    str(pathlib.Path(__file__).resolve().parents[1] / "config" / "config.toml"),
+)
 
 try:
     import tomllib as tomli

@@ -1,50 +1,64 @@
-from flask import Flask, jsonify, send_from_directory
-import queue, threading, time, os
-
-try:
-    import serial
-except Exception:
-    serial = None
+from flask import Flask, Response, send_from_directory
+import queue
+import threading
+import time
+import serial
 
 app = Flask(__name__, static_url_path="", static_folder="static")
-q = queue.Queue(maxsize=500)
+q = queue.Queue(maxsize=1000)
+
 
 def parse_line(s: str):
     # crude parser for protocol tokens
     parts = s.split(":")
-    if not parts: return None
+    if not parts:
+        return None
     return {"raw": s, "t": time.time()}
 
-@app.get("/api/telemetry")
-def api_telemetry():
-    items = []
-    try:
+
+def serial_reader(port="/dev/ttyESP32", baud=115200):
+    while True:
+        try:
+            with serial.Serial(port, baud, timeout=1) as ser:
+                for raw in ser:
+                    s = raw.decode(errors="ignore").strip()
+                    if not s:
+                        continue
+                    data = parse_line(s)
+                    if data:
+                        try:
+                            q.put_nowait(data)
+                        except Exception:
+                            # queue full; drop oldest
+                            try:
+                                q.get_nowait()
+                            except Exception:
+                                pass
+                            try:
+                                q.put_nowait(data)
+                            except Exception:
+                                pass
+        except Exception:
+            # If serial open fails, backoff a bit and retry
+            time.sleep(1)
+
+
+@app.get("/events")
+def events():
+    def gen():
         while True:
-            items.append(q.get_nowait())
-    except Exception:
-        pass
-    return jsonify(items)
+            item = q.get()
+            yield f"data: {item}\n\n"
+
+    return Response(gen(), mimetype="text/event-stream")
+
 
 @app.get("/")
 def index():
     return send_from_directory(app.static_folder, "index.html")
 
-def serial_reader(port="/dev/ttyESP32", baud=115200):
-    if serial is None:
-        return
-    try:
-        with serial.Serial(port, baud, timeout=1) as ser:
-            for line in ser:
-                s = line.decode(errors="ignore").strip()
-                data = parse_line(s)
-                if data:
-                    try: q.put_nowait(data)
-                    except: pass
-    except Exception as e:
-        while True:
-            time.sleep(1)
 
 if __name__ == "__main__":
     t = threading.Thread(target=serial_reader, daemon=True)
     t.start()
-    app.run(host="0.0.0.0", port=8080)
+    app.run(host="0.0.0.0", port=8080, threaded=True)

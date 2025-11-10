@@ -2,17 +2,25 @@ import cv2
 import numpy as np
 import time
 
+
 def region_of_interest(img):
     height, width = img.shape
     # Rectangular ROI for prototype scale
-    polygons = np.array([
-        [(0, int(0.5 * height)), (width, int(0.5 * height)),
-         (width, height), (0, height)]
-    ])
+    polygons = np.array(
+        [
+            [
+                (0, int(0.5 * height)),
+                (width, int(0.5 * height)),
+                (width, height),
+                (0, height),
+            ]
+        ]
+    )
     mask = np.zeros_like(img)
     cv2.fillPoly(mask, polygons, 255)
     masked_image = cv2.bitwise_and(img, mask)
     return masked_image
+
 
 def compute_lane_lines(lines):
     left_lines, right_lines = [], []
@@ -32,12 +40,14 @@ def compute_lane_lines(lines):
     right_lane = np.average(right_lines, axis=0) if right_lines else None
     return left_lane, right_lane
 
+
 def compute_lane_midpoint(left_lane, right_lane, y):
     if left_lane is None or right_lane is None:
         return None
     left_x = int((y - left_lane[1]) / left_lane[0])
     right_x = int((y - right_lane[1]) / right_lane[0])
     return (left_x + right_x) // 2
+
 
 # Initialize webcam
 cap = cv2.VideoCapture(0)
@@ -64,7 +74,9 @@ while cap.isOpened():
     edges = cv2.Canny(blur, 50, 150)
 
     roi = region_of_interest(edges)
-    lines = cv2.HoughLinesP(roi, 1, np.pi/180, threshold=30, minLineLength=20, maxLineGap=30)
+    lines = cv2.HoughLinesP(
+        roi, 1, np.pi / 180, threshold=30, minLineLength=20, maxLineGap=30
+    )
 
     lane_detected = False
     lane_position = "No lane lines"
@@ -82,13 +94,15 @@ while cap.isOpened():
                 lane_position = "Centered"
             print(f"Prototype lane position: {lane_position}")
             timestamp = time.strftime("%Y%m%d-%H%M%S")
-            cv2.imwrite(f'prototype_lane_{timestamp}.jpg', frame)
+            cv2.imwrite(f"prototype_lane_{timestamp}.jpg", frame)
         else:
             print("Only one lane line detected.")
     else:
         lane_position = "No lane lines"
 
-    print(f"Frame {frame_id} | Lane Detected: {lane_detected} | Position: {lane_position}")
+    print(
+        f"Frame {frame_id} | Lane Detected: {lane_detected} | Position: {lane_position}"
+    )
 
 cap.release()
 print("Lane detection ended.")

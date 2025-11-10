@@ -1,5 +1,4 @@
 import serial
-import os
 
 # Change 'COM3' to your ESP32's actual port (Check Device Manager or use 'ls /dev/ttyUSB*' on Linux/Mac)
 ESP32_PORT = "COM7"  # Windows Example
@@ -23,18 +22,18 @@ with open(FILENAME, "a") as file:  # Open in append mode
     while True:
         try:
             data = ser.readline().decode().strip()  # Read and clean data from ESP32
-            
+
             if data:  # If data is received
                 print(f"📌 Received: {data}")
 
                 if data.startswith("[SAVE]"):  # Expected format from ESP32
                     fingerprint_id = data.replace("[SAVE] ", "").strip()
                     print(f"💾 Saving fingerprint: {fingerprint_id}")
-                    
+
                     # Write to file
                     file.write(fingerprint_id + "\n")
                     file.flush()  # Ensure data is saved immediately
-                    
+
                     print(f"✅ Saved to {FILENAME}\n")
 
         except KeyboardInterrupt:  # Stop script with CTRL+C
