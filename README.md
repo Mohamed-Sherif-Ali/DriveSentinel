@@ -62,7 +62,7 @@ The project merges **embedded control**, **computer vision**, and **human-aware 
 
 ```bash
 # Clone & prepare environment
-git clone https://github.com/<your-username>/DriveSentinel.git
+git clone https://github.com/Mohamed-Sherif-Ali/DriveSentinel.git
 cd DriveSentinel
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
