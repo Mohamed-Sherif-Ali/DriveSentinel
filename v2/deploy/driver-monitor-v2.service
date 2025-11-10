@@ -1,0 +1,18 @@
+[Unit]
+Description=Driver Monitor v2 (MediaPipe + Protocol)
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/esp32-autopilot-driver-monitor/v2
+ExecStart=/home/pi/esp32-autopilot-driver-monitor/.venv/bin/python -m pc_v2.driver_monitor_v2 --port /dev/ttyESP32 --baud 115200 --cam 0
+Restart=always
+RestartSec=2
+ProtectSystem=full
+ProtectHome=read-only
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
