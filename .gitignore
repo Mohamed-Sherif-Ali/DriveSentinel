@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.sqlite*
+*.db
+.env
+.venv/
+venv/
+*.log
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Images & cache
+*.jpg
+*.png
+*.jpeg
+
+# Arduino build artifacts (if any IDE caches locally)
+.build/

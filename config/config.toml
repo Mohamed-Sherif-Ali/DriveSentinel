@@ -1,0 +1,17 @@
+# Global configuration for Raspberry Pi 5 + ESP32 prototype
+[serial.esp32]
+port = "/dev/ttyESP32"   # e.g., /dev/ttyUSB0 or /dev/ttyACM0
+baud = 115200
+
+[camera]
+index = 0                # webcam index for OpenCV
+
+[drowsiness]
+ear_thresh = 0.25        # eye aspect ratio threshold
+ear_frames = 20          # consecutive frames below threshold
+release_seconds = 2.0    # eyes-open seconds required to disable autopilot
+
+[fingerprint.logger]
+port = "/dev/ttyESP32"   # if fingerprint console shares the same USB-serial, adjust as needed
+baud = 57600             # typical R307 console baud
+log_path = "fingerprints.txt"

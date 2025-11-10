@@ -1,0 +1,20 @@
+[Unit]
+Description=Driver Monitor (MediaPipe) - Pi5 Brain
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/esp32-autopilot-driver-monitor
+Environment=APP_CONFIG=/home/pi/esp32-autopilot-driver-monitor/config/config.toml
+ExecStart=/home/pi/esp32-autopilot-driver-monitor/.venv/bin/python /home/pi/esp32-autopilot-driver-monitor/pc/launch_driver_monitor.py
+Restart=always
+RestartSec=2
+# Hardening (test on your setup)
+ProtectSystem=full
+ProtectHome=read-only
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

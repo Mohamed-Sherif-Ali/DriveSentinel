@@ -1,0 +1,18 @@
+[Unit]
+Description=Dashboard v2 (Flask SSE)
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/esp32-autopilot-driver-monitor/v2/dashboard_v2
+ExecStart=/home/pi/esp32-autopilot-driver-monitor/.venv/bin/python app.py
+Restart=always
+RestartSec=2
+ProtectSystem=full
+ProtectHome=read-only
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

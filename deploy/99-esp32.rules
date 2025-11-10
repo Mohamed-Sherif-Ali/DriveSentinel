@@ -1,0 +1,3 @@
+# Assign stable symlink for CH340/CP210x adapters (adjust IDs as needed)
+# Example CH340 (1a86:7523) -> /dev/ttyESP32
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="ttyESP32"

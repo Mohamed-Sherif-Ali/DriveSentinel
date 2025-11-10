@@ -1,0 +1,4 @@
+# Optional extras for face recognition
+# face-recognition
+# insightface
+# onnxruntime
