@@ -1,0 +1,68 @@
+# ═══════════════════════════════════════════════════════════════════
+# DriveSentinel - Python Dependencies
+# ═══════════════════════════════════════════════════════════════════
+#
+# Installation:
+#   pip install -r requirements.txt
+#
+# For Raspberry Pi, you may need to install system packages first:
+#   sudo apt update
+#   sudo apt install python3-opencv python3-pip
+#
+# ═══════════════════════════════════════════════════════════════════
+
+# ───────────────────────────────────────────────────────────────────
+# Computer Vision & AI
+# ───────────────────────────────────────────────────────────────────
+
+# OpenCV - Computer vision library for lane detection and image processing
+opencv-python==4.8.1.78
+
+# MediaPipe - Google's ML framework for facial landmark detection
+mediapipe==0.10.8
+
+# NumPy - Numerical computing for array operations and calculations
+numpy==1.24.3
+
+# ───────────────────────────────────────────────────────────────────
+# Hardware Communication
+# ───────────────────────────────────────────────────────────────────
+
+# pySerial - Serial communication with ESP32
+pyserial==3.5
+
+# ───────────────────────────────────────────────────────────────────
+# Database (Built-in)
+# ───────────────────────────────────────────────────────────────────
+
+# SQLite3 - Included with Python standard library
+# No additional package needed
+
+# ═══════════════════════════════════════════════════════════════════
+# Optional Dependencies for Development
+# ═══════════════════════════════════════════════════════════════════
+
+# Matplotlib - Data visualization for debugging (optional)
+# matplotlib==3.7.2
+
+# Pandas - Data analysis for log processing (optional)
+# pandas==2.0.3
+
+# ═══════════════════════════════════════════════════════════════════
+# Platform-Specific Notes
+# ═══════════════════════════════════════════════════════════════════
+#
+# Raspberry Pi:
+#   - Use Python 3.9 or higher
+#   - Consider using apt package: python3-opencv (faster on ARM)
+#   - May need: sudo apt install python3-dev libatlas-base-dev
+#
+# Windows/Mac Development:
+#   - All packages install via pip normally
+#   - OpenCV includes GUI support
+#
+# Linux:
+#   - May need: sudo apt install python3-tk (for GUI)
+#   - Install build tools: sudo apt install build-essential
+#
+# ═══════════════════════════════════════════════════════════════════
